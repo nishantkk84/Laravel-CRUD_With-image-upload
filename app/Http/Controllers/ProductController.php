@@ -121,4 +121,10 @@ class ProductController extends Controller
         $pdf = Pdf::loadView('products.pdf', compact('products'));
         return $pdf->download('products.pdf');
     }
+
+    public function export()
+{
+    return Excel::download(new ProductsExport, 'products.xlsx');
+}
+
 }

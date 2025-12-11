@@ -39,9 +39,10 @@
             </div>
 
             <div class="mb-3">
-                <label class="form-label">Description:</label>
-                <textarea name="description" class="form-control" placeholder="Enter description"></textarea>
-            </div>
+    <label class="form-label">Description:</label>
+    <textarea name="description" class="form-control" style="height:80px;">{{ old('description', $product->description ?? '') }}</textarea>
+</div>
+
 
             <button type="submit" class="btn btn-success">Save</button>
             <a href="{{ route('products.index') }}" class="btn btn-secondary">Back</a>

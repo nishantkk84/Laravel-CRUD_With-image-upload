@@ -34,10 +34,10 @@
                 <input type="number" name="price" value="{{ $product->price }}" class="form-control" required>
             </div>
 
-            <div class="mb-3">
-                <label class="form-label">Description:</label>
-                <textarea name="description" class="form-control">{{ $product->description }}</textarea>
-            </div>
+           <div class="mb-3">
+    <label class="form-label">Description:</label>
+    <textarea name="description" class="form-control" style="height:80px;">{{ old('description', $product->description ?? '') }}</textarea>
+</div>
 
             <div class="mb-3">
                 <label class="form-label">Product Image:</label><br>

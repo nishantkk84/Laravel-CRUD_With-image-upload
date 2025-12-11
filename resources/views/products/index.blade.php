@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@php use Illuminate\Support\Str; @endphp
 @section('content')
 
 <div class="d-flex justify-content-between mb-3">
@@ -52,18 +52,22 @@
             <td>{{ $product->id }}</td>
             <td>{{ $product->name }}</td>
             <td>{{ $product->price }}</td>
-            <td>{{ $product->description }}</td>
+            <td>{{ $product->description, 50 }}</td>
 
-            <td>
-                <a href="{{ route('products.show', $product->id) }}" class="btn btn-info btn-sm">View</a>
-                <a href="{{ route('products.edit', $product->id) }}" class="btn btn-warning btn-sm">Edit</a>
+           <td style="white-space: nowrap;">
+    <div style="display: inline-flex; gap: 6px; align-items: center;">
+        <a class="btn btn-info btn-sm" href="{{ route('products.show', $product->id) }}">View</a>
+        <a class="btn btn-primary btn-sm" href="{{ route('products.edit', $product->id) }}">Edit</a>
 
-                <form action="{{ route('products.destroy', $product->id) }}" method="POST" class="d-inline">
-                    @csrf
-                    @method('DELETE')
-                    <button type="button" class="btn btn-danger btn-sm delete-btn">Delete</button>
-                </form>
-            </td>
+        <form action="{{ route('products.destroy', $product->id) }}" method="POST" style="display: inline;">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="btn btn-danger btn-sm delete-btn">Delete</button>
+        </form>
+    </div>
+</td>
+
+
         </tr>
     @endforeach
     </tbody>
